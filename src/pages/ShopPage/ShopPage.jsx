@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
 import Loading from "../../components/ui/Loading";
 import Swal from "sweetalert2";
-import { IoSearch } from "react-icons/io5";
+import { IoCart, IoSearch } from "react-icons/io5";
 
 const ShopPage = () => {
     const [medicines, setMedicines] = useState([]);
@@ -129,7 +129,7 @@ const ShopPage = () => {
 
         const matched = medicines.filter((med) =>
             med.name.toLowerCase().includes(value.toLowerCase()) ||
-            med.generic_name?.toLowerCase().includes(value.toLowerCase())||
+            med.generic_name?.toLowerCase().includes(value.toLowerCase()) ||
             med.company.toLowerCase().includes(value.toLowerCase())
         ).slice(0, 5);
 
@@ -202,63 +202,90 @@ const ShopPage = () => {
 
             <h2 className="text-xl font-bold mb-4">All Medicines</h2>
 
-            {/* Table */}
-            <div className="overflow-x-auto rounded-xl shadow-md border mt-6 border-gray-200">
-                <table className="min-w-full bg-white text-sm text-gray-700">
-                    <thead className="bg-gradient-to-r from-blue-100 to-blue-200 text-gray-700 text-xs uppercase tracking-wider">
-                        <tr>
-                            <th className="px-4 py-3 text-left hidden md:table-cell">Image</th>
-                            <th className="px-4 py-3 text-left">Name</th>
-                            <th className="px-4 py-3 text-left hidden md:table-cell">Company</th>
-                            <th className="px-4 py-3 text-left hidden md:table-cell">Category</th>
-                            <th className="px-4 py-3 text-left">Price</th>
-                            <th className="px-4 py-3 text-left">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200">
-                        {displayedMedicines.map((item, index) => (
-                            <tr key={item._id} className={index % 2 === 0 ? "bg-white" : "bg-gray-50 hover:bg-gray-100"}>
-                                <td className="px-4 py-3 hidden md:table-cell">
-                                    <img src={item.image} alt={item.name} className="w-14 h-14 object-cover rounded border" />
-                                </td>
-                                <td className="px-2 py-3 w-22 pr-0 md:px-4 md:pr-4 md:w-auto">{item.name}</td>
-                                <td className="px-4 py-3 hidden md:table-cell">{item.company}</td>
-                                <td className="px-4 py-3 hidden md:table-cell">{item.category}</td>
-                                <td className="px-4 py-3 w-40 md:w-auto">
-                                    {item.discount > 0 ? (
-                                        <>
-                                            <span className="line-through text-gray-400 text-sm mr-1">{item.price}৳</span>
-                                            <span className="text-green-600 font-semibold">{getDiscountedPrice(item.price, item.discount)}৳</span>
-                                            <span className="ml-1 text-primary text-xs">({item.discount}% off)</span>
-                                        </>
-                                    ) : (
-                                        <span>{item.price}৳</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {displayedMedicines.map((item) => (
+                    <div key={item._id} className="w-full max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden flex flex-col ">
+
+                        {/* Image */}
+                        <div className="h-[240px] w-full">
+                            <img
+                                src={item.image} alt={item.name}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1 flex flex-col justify-between p-4 text-center">
+                            <div className="space-y-2">
+                                <h2 className="text-xl font-semibold line-clamp-2">
+                                    Name : {item.name}
+                                </h2>
+
+                                <div className="flex flex-wrap justify-center gap-1 text-base font-medium">
+                                    <span className="text-[#509E2F]">Category:</span>
+                                    <span className="text-gray-600">{item.category}</span>
+
+                                </div>
+
+                                <div className="flex items-center justify-center gap-2 text-gray-600">
+                                    <span className=" font-semibold">Company:</span>
+                                    <span>{item.company}</span>
+                                </div>
+
+                                <div className="flex items-center gap-2 justify-center">
+                                    <span className="font-semibold">Price :</span>
+
+                                    {/* Original price with strikethrough */}
+                                    {item.discount > 0 && (
+                                        <span className="text-gray-400 line-through">
+                                            {item.price}৳
+                                        </span>
                                     )}
-                                </td>
-                                <td className="px-4 py-3">
-                                    <div className="flex gap-2 justify-start items-center">
-                                        <button
-                                            onClick={() => setSelectedMedicine(item)}
-                                            className="text-blue-600 hover:text-blue-800 transition"
-                                        >
-                                            <FaEye />
-                                        </button>
-                                        <button
-                                            onClick={() => handleSelect(item)}
-                                            disabled={role === "admin" || role === "seller"}
-                                            className={`px-2 py-1 text-xs rounded ${role === "admin" || role === "seller"
-                                                ? "bg-gray-300 cursor-not-allowed"
-                                                : "bg-blue-500 text-white hover:bg-blue-600"
-                                                }`}
-                                        >
-                                            Select
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+
+                                    {/* Discounted / Normal price */}
+                                    <span
+                                        className={`font-semibold ${item.discount > 0 ? "text-green-600" : "text-black"
+                                            }`}
+                                    >
+                                        {item.discount > 0
+                                            ? getDiscountedPrice(item.price, item.discount)
+                                            : item.price}
+                                        ৳
+                                    </span>
+
+                                    {/* Discount percentage */}
+                                    {item.discount > 0 && (
+                                        <span className="text-blue-600 text-sm font-medium">
+                                            ({item.discount}% off)
+                                        </span>
+                                    )}
+                                </div>
+
+
+                            </div>
+
+                            {/* Button */}
+                            <div className="mt-4 flex gap-2">
+                                <button
+                                    onClick={() => setSelectedMedicine(item)}
+                                    className="block flex-1/2  bg-[#509E2F] cursor-pointer text-white py-2 rounded-full text-center font-medium hover:bg-green-600 transition-colors"
+                                >
+                                    View details
+                                </button>
+                                <button className='flex-1/2'>
+                                    <IoCart
+                                        size={16}
+                                        onClick={() => role !== "admin" && role !== "seller" && handleSelect(item)}
+                                        className={`w-full h-10 p-1 rounded-full text-white ${role === "admin" || role === "seller"
+                                            ? "bg-gray-300 cursor-not-allowed"
+                                            : "bg-blue-400 hover:bg-blue-500 cursor-pointer"
+                                            }`}
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
 
             {/* Modal */}
@@ -288,7 +315,7 @@ const ShopPage = () => {
                                         }</p>
                                     </div>
                                     <div className="mt-6 text-right">
-                                        <button onClick={() => setSelectedMedicine(null)} className="btn btn-sm">Close</button>
+                                        <button onClick={() => setSelectedMedicine(null)} className="btn text-white btn-error btn-sm ">Close</button>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
