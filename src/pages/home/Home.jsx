@@ -6,6 +6,7 @@ import MissionSection from './MissionSection';
 import HowItWorks from './HowItWorks';
 import DiscountSection from './DiscountSection';
 import MediSection1 from './MediSection1';
+import RecentAdded from './RecentAdded';
 
 const Home = () => {
     useEffect(() => {
@@ -15,11 +16,12 @@ const Home = () => {
     return (
         <div>
             <Banner/>
+            <RecentAdded/>
             <FeaturesSection/>
             <DiscountSection/>
             <MediSection1/>
-            <AboutUs/>
             <HowItWorks/>
+            <AboutUs/>
             <MissionSection/>
         </div>
     );

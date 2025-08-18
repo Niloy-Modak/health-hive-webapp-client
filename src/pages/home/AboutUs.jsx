@@ -24,11 +24,11 @@ const AboutUs = () => {
                 </div>
 
                 {/* Image Section */}
-                <div className="flex justify-center">
+                <div className="flex  justify-center">
                     <img
-                        src="https://img.freepik.com/free-vector/online-doctor-concept-illustration_114360-5806.jpg?w=826&t=st=1718640382~exp=1718640982~hmac=efe118f33422dc593f8efacb8aaeaefaf4ec9d16dcb6d4c35ff29a3c65076df3"
+                        src="https://i.ibb.co.com/0R18dRrb/upsxal.jpg"
                         alt="About HealthHive"
-                        className="rounded-xl shadow-lg w-full max-w-md"
+                        className="rounded-xl  shadow-lg w-full max-w-md"
                     />
                 </div>
             </div>
