@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { IoCart } from 'react-icons/io5';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 
-const RecentAdded = ({ role, handleSelect }) => {
+const RecentAdded = ({ role }) => {
     const [selectedMedicine, setSelectedMedicine] = useState(null);
     const axiosSecure = useAxiosSecure();
 
@@ -32,8 +32,8 @@ const RecentAdded = ({ role, handleSelect }) => {
     const recentMedicines = medicines.slice(0, 4);
 
     return (
-        <section className="py-10 px-4">
-            <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">Recently Added Medicines</h1>
+        <section className="pb-10 pt-14">
+            <h1 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 lg:mb-10 text-center">Recently Added Medicines</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {recentMedicines.map((item) => (
                     <div key={item._id} className="w-full max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden flex flex-col ">
@@ -86,19 +86,7 @@ const RecentAdded = ({ role, handleSelect }) => {
                                 >
                                     View details
                                 </button>
-
-                                <button className="flex-1">
-                                    <IoCart
-                                        size={20}
-                                        onClick={() => {
-                                            if (role !== "admin" && role !== "seller") handleSelect(item);
-                                        }}
-                                        className={`w-full h-10 p-1 rounded-full text-white ${role === "admin" || role === "seller"
-                                            ? "bg-gray-300 cursor-not-allowed"
-                                            : "bg-secondary hover:bg-sky-500 cursor-pointer"
-                                            }`}
-                                    />
-                                </button>
+                               
                             </div>
                         </div>
                     </div>
@@ -107,7 +95,7 @@ const RecentAdded = ({ role, handleSelect }) => {
 
             {/* Modal for selected medicine */}
             {selectedMedicine && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div className="fixed inset-0 bg-black/25 bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative">
                         <button
                             onClick={() => setSelectedMedicine(null)}
