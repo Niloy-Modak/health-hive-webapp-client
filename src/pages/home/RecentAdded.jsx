@@ -33,7 +33,9 @@ const RecentAdded = ({ role }) => {
 
     return (
         <section className="pb-10 pt-14">
+            
             <h1 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 lg:mb-10 text-center">Recently Added Medicines</h1>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {recentMedicines.map((item) => (
                     <div key={item._id} className="w-full max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden flex flex-col ">
