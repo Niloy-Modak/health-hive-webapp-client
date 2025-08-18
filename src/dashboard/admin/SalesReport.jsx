@@ -148,7 +148,7 @@ const SalesReport = () => {
             {/* Sales Table */}
             <div className="overflow-x-auto rounded-xl shadow-md border border-gray-200">
                 <table ref={tableRef} className="min-w-full bg-white text-sm text-gray-700">
-                    <thead className="bg-gradient-to-r from-green-100 to-green-200 text-gray-700 text-xs uppercase tracking-wider">
+                    <thead className="bg-gradient-to-r from-blue-100 to-blue-200 text-gray-700 text-xs uppercase tracking-wider">
                         <tr>
                             <th className="px-4 py-3 text-left">Image</th>
                             <th className="px-4 py-3 text-left">Name</th>

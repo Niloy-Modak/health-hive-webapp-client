@@ -91,7 +91,7 @@ const AllUsers = () => {
   }
 
   return (
-    <div className="px-4 md:px-8 py-6">
+    <div className="px-2 md:px-8 py-6">
       <h2 className="text-2xl font-bold mb-4">All Users</h2>
 
       <div className="overflow-x-auto">
@@ -131,7 +131,7 @@ const AllUsers = () => {
                 <td className="flex items-center gap-2 justify-center">
                   {/* View */}
                   <button
-                    className="btn btn-xs btn-neutral"
+                    className="btn btn-xs h-8 w-8 btn-neutral"
                     title="View Details"
                     onClick={() => openModal(user)}
                   >
@@ -140,7 +140,7 @@ const AllUsers = () => {
 
                   {/* Approve */}
                   <button
-                    className="btn btn-xs btn-success text-white"
+                    className="btn btn-xs btn-success h-8 w-8 text-white"
                     title="Approve"
                     disabled={
                       user.status === "approved" ||            // Already approved
@@ -155,7 +155,7 @@ const AllUsers = () => {
 
                   {/* Reject */}
                   <button
-                    className="btn btn-xs btn-error text-white"
+                    className="btn btn-xs btn-error h-8 w-8 text-white"
                     title="Reject"
                     disabled={
                       user.status === "rejected" ||               // Already rejected

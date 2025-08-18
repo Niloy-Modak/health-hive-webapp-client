@@ -5,6 +5,7 @@ import AboutUs from './AboutUs';
 import MissionSection from './MissionSection';
 import HowItWorks from './HowItWorks';
 import DiscountSection from './DiscountSection';
+import MediSection1 from './MediSection1';
 
 const Home = () => {
     useEffect(() => {
@@ -16,6 +17,7 @@ const Home = () => {
             <Banner/>
             <FeaturesSection/>
             <DiscountSection/>
+            <MediSection1/>
             <AboutUs/>
             <HowItWorks/>
             <MissionSection/>
