@@ -85,7 +85,7 @@ const SellerAddedMedicines = ({ searchText }) => {
         <>
             <div className="overflow-x-auto rounded-lg shadow border border-gray-300">
                 <table className="table table-zebra w-full">
-                    <thead className=" text-base font-semibold bg-sky-100 text-gray-800">
+                    <thead className=" text-base font-semibold bg-gradient-to-r from-blue-100 to-blue-200 text-gray-800">
                         <tr>
                             <th className="py-3">Image</th>
                             <th>Medicine</th>

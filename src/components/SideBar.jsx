@@ -27,7 +27,8 @@ const SideBar = () => {
     { id: 3, to: '/dashboard/payment-history', label: 'Payment History', icon: <FiCreditCard /> },
   ];
   const userNavItems = [
-    { id: 1, to: '/dashboard/user-payment-history', label: 'Payment History', icon: <FiCreditCard /> },
+    { id: 1, to: '/dashboard/user-dashboard', label: 'User Dashboard', icon: <FiHome /> },
+    { id: 2, to: '/dashboard/user-payment-history', label: 'Payment History', icon: <FiCreditCard /> },
   ];
 
   const getNavItems = () => {

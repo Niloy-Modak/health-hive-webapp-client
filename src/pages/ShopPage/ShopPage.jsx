@@ -218,7 +218,7 @@ const ShopPage = () => {
                         <div className="flex-1 flex flex-col justify-between p-4 text-center">
                             <div className="space-y-2">
                                 <h2 className="text-xl font-semibold line-clamp-2">
-                                    Name : {item.name}
+                                    {item.name}
                                 </h2>
 
                                 <div className="flex flex-wrap justify-center gap-1 text-base font-medium">
@@ -268,7 +268,7 @@ const ShopPage = () => {
                             <div className="mt-4 flex gap-2">
                                 <button
                                     onClick={() => setSelectedMedicine(item)}
-                                    className="block flex-1/2  bg-[#509E2F] cursor-pointer text-white py-2 rounded-full text-center font-medium hover:bg-green-600 transition-colors"
+                                    className="block flex-1/2  bg-primary cursor-pointer text-white py-2 rounded-full text-center font-medium hover:bg-sky-600 transition-colors"
                                 >
                                     View details
                                 </button>
@@ -278,7 +278,7 @@ const ShopPage = () => {
                                         onClick={() => role !== "admin" && role !== "seller" && handleSelect(item)}
                                         className={`w-full h-10 p-1 rounded-full text-white ${role === "admin" || role === "seller"
                                             ? "bg-gray-300 cursor-not-allowed"
-                                            : "bg-blue-400 hover:bg-blue-500 cursor-pointer"
+                                            : "bg-secondary hover:bg-sky-500 cursor-pointer"
                                             }`}
                                     />
                                 </button>

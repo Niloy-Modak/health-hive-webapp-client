@@ -78,7 +78,7 @@ const UserPaymentHistory = () => {
                                     </span>
                                 </td>
                                 <td className="px-4 py-3 font-semibold text-blue-600 hidden md:table-cell">
-                                    ${payment.payment}
+                                    {payment.payment} ৳
                                 </td>
                                 <td className="px-4 py-3 break-all text-xs text-gray-600 hidden md:table-cell">
                                     {payment.transactionId}

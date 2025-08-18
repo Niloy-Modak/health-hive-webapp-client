@@ -37,7 +37,7 @@ const SellerHomePage = () => {
     // Calculate total income
     const totalIncome = soldProducts.reduce((sum, item) => sum + (item.payment || 0), 0);
 
-    // Chart data: you can customize this (e.g., category wise income)
+    // Chart data
     const chartData = [
         {
             name: "My Products",
@@ -55,6 +55,25 @@ const SellerHomePage = () => {
 
     return (
         <div className="w-[90%] lg:w-[85%] mx-auto mt-6 space-y-8">
+            {/* Seller Profile Section */}
+            <div className="bg-white shadow-md rounded-xl p-6 border flex flex-col sm:flex-row items-center gap-6">
+                {/* Profile Image */}
+                <img
+                    src={user?.photoURL || "https://via.placeholder.com/150"}
+                    alt={user?.displayName}
+                    className="w-28 h-28 rounded-full border-4 border-secondary object-cover"
+                />
+
+                {/* Info */}
+                <div className="text-center sm:text-left">
+                    <h1 className="text-2xl font-bold text-gray-700">{user?.displayName || "Seller"}</h1>
+                    <p className="text-gray-500 mt-1">{user?.email}</p>
+                    <span className="mt-2 inline-block px-3 py-1 text-sm bg-emerald-100 text-emerald-600 rounded-full font-medium">
+                        Seller Dashboard
+                    </span>
+                </div>
+            </div>
+
             {/* Top Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white shadow-md rounded-xl p-6 border">

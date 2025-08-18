@@ -22,6 +22,7 @@ import CartPage from "../pages/cartpage/CartPage";
 import CheckOutPage from "../pages/checkoutPage/CheckOutPage";
 import UserPaymentHistory from "../dashboard/user/UserPaymentHistory";
 import PrivateRoute from "./PrivateRoute";
+import UserInfo from "../dashboard/user/UserInfo";
 
 
 const Router = createBrowserRouter([
@@ -119,11 +120,16 @@ const Router = createBrowserRouter([
                 HydrateFallback: Loading,
                 element: <SellerRoute><ManageMedicines/></SellerRoute>
             },
-            
+            //user -----------------------------
             {
                 path: '/dashboard/user-payment-history',
                 HydrateFallback: Loading,
                 element: <PrivateRoute><UserPaymentHistory/></PrivateRoute>
+            },
+            {
+                path: '/dashboard/user-dashboard',
+                HydrateFallback: Loading,
+                element: <PrivateRoute><UserInfo/></PrivateRoute>
             },
         ]
     }
