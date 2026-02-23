@@ -4,14 +4,6 @@ Health Hive is a modern full-stack online pharmacy platform where users can purc
 
 ---
 
-## Live & Source Code
-
-- **Live Site:** _Add live site link here_
-- **GitHub Client:** _Add client repo link here_
-- **GitHub Server:** _Add server repo link here_
-
----
-
 ## Features
 
 ### User Features
